@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/babel.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>替换状态</title>
+		<style type="text/css">
+			#Clement{
+				cursor: pointer;/*小手*/
+				-moz-user-select:none;
+			    -webkit-user-select: none;/*取消a标签*/
+			    -ms-user-select: none;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="Clement">
+				
+		</div>
+		<!--替换状态:replaceState-->
+		
+		<script type="text/babel">
+			var Counter = React.createClass({
+		        getInitialState: function () {
+		          	return { clickCount: 0 };
+		        },
+		        handleClick: function () {
+		          	this.setState(function(state) {
+		            	return {clickCount: state.clickCount + 1};
+		          	});
+		        },    
+		        render: function () {
+		          	return (
+		          		<h2 onClick={this.handleClick}>
+		          			点我！点击次数为: {this.state.clickCount}
+		          		</h2>
+		          	);
+		        }
+		   	});
+		   	
+		    ReactDOM.render(
+		    	<Counter />,
+		    	document.getElementById('Clement')
+		    );
+			
+			
+		</script>
+	</body>
+</html>

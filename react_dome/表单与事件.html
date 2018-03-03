@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/babel.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>表单与事件</title>
+	</head>
+	<body>
+		<div id="Clement">
+			
+		</div>
+		<script type="text/babel">
+			
+			var Hello =React.createClass({
+		    	getInitialState:function(){
+		    		return {num:1}
+		    	},
+		    	add:function(event){
+		    		this.setState({num:event.target.value})
+		    	},
+		    	render:function(){
+		    		return <div>
+		    			        <button>button</button>
+		    					<input  value={this.state.num}  onChange={this.add} />     
+		    					<div>{this.state.num}</div>
+		    		        </div>
+		    	}
+		    })
+	   
+			ReactDOM.render(
+				<Hello />,
+				document.getElementById('Clement'))
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="../js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/babel.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="Clement">
+			
+		</div>
+		
+		<script type="text/babel">
+			
+			var Hello=React.createClass({
+				getInitialState:function(){
+					return {num:1}
+				},
+				add:function(){
+					this.setState({num.this.state.num+1})
+				},
+				render:function(){
+					return <div>
+							<button oonclick={this.add}>button</button>
+							<Content Mynum={this.state.num}/>
+						</div>
+				}
+			})
+			var Content=React.createClass({
+				render:function(){
+					return <div>{this.props.My}</div>
+				},
+				componentWillMount:function(){
+	    		console.log("component Will  Mount");
+		    	},
+		    	componentDidMount:function(){
+		    		console.log("component Did  Mount");
+		    	},
+		    	componentWillReceiveProps:function(){
+		    		console.log("component  Will  Receive  Props");
+		    	},
+		    	componentWillUpdate:function(){
+		    		console.log("component  Will  Update");
+		    	},
+		    	componentDidUpdate:function(){
+		    		console.log("component Did Update");
+		    	},
+		    	shouldComponentUpdate:function(newProps,newState){
+		    		return true
+		    	}
+	    		
+			})
+			ReactDOM.render(
+			<Hello />
+			,
+			document.getElementById('Clement'))
+		</script>
+		
+		
+	</body>
+</html>

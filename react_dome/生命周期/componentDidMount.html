@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="../js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/babel.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="Clement">
+			
+		</div>
+		
+		<script type="text/babel">
+			
+			var Hello=React.createClass({
+			getInitialState:function(){
+				return {opacity: 1};
+			},
+			render:function(){
+				return <div style={{opacity:this.state.opacity}}>hello  </div>
+			},
+			componentDidMount:function(){
+				setInterval(function(){
+					if(this.state.opacity<0){
+						this.state.opacity=1
+					}
+						this.setState({opacity:this.state.opacity-0.05})    
+				}.bind(this),100)
+			}
+			
+		})
+		ReactDOM.render(
+			<Hello />,
+			document.getElementById('Clement')
+		)
+		</script>
+		
+	</body>
+</html>

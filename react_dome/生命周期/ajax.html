@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="../js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/babel.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script 
+		<title>Ajax请求</title>
+	</head>
+	<body>
+		<div id="Clement">
+			
+		</div>
+		
+		<script type="text/babel">
+			
+			var Hello =React.createClass({
+		    	getInitialState:function(){
+		    		return {num:1}
+		    	},
+		    	add:function(){
+		    		this.setState({num:this.state.num+1})
+		    	},
+		    	render:function(){
+		    		return <div>
+		    			        <button onClick={this.add}>button</button>
+		    			        <Content Mynum={this.state.num}/>
+		    		       </div>
+		    	}
+		    })
+			
+			var Content=React.createClass({
+				getInitialState:function(){
+					return {
+						username:"",
+						password:""
+					}
+				},
+				render:function(){
+					return <div>
+								{this.props.Mynum}
+								{this.state.username}<br />
+								{this.state.password}{/*显示comments_url*/}
+							</div>
+				},
+				componentDidMount:function(){
+					console.log("component Will Mount");
+				},
+				componentDidMount:function(){
+					console.log("component Did Mount");
+					console.log("开始做Ajax");
+					$.get("https://api.github.com/users/octocat/gists",function(result){//第一个参数是请求路径，第二个参数是成功的回掉函数
+						var data=result[0];
+						this.setState({//设置comments_url
+							username:data.comments_url,
+							password:data.commeits_url
+						})
+					}.bind(this))
+				}
+			})
+			ReactDOM.render(
+				<Hello />,
+				document.getElementById('Clement'))
+		</script>
+	</body>
+</html>

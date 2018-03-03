@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<script src="js/react.min.js"></script>
+		<script src="js/react-dom.min.js"></script>
+		<script src="js/babel.min.js"></script>
+		<!--document.getElementById('example')-->
+	</head>
+
+	<body>
+		 <div id="example">
+		 	
+		 </div>
+	</body>
+	<script type="text/babel">
+		var Chils=React.createClass({
+			propTypes:{
+				title:React.PropTypes.string.isRequired,
+			},
+			render:function(){
+				return <div>{this.props.title}</div>
+			}
+		})
+		var tel=null;
+		ReactDOM.render(
+			<Chils title={tel}/>,
+			document.getElementById('example')
+		)
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="Clement">
+			
+		</div>
+		
+		<script type="text/babel">
+			var LikeButton = React.createClass({
+		        getInitialState: function() {
+		          return {liked: false};
+		        },
+		        handleClick: function(event) {
+		          this.setState({liked: !this.state.liked});
+		        },
+		        render: function() {
+		          var text = this.state.liked ? '喜欢' : '不喜欢';
+		          return (
+		            <p onClick={this.handleClick}>
+		              <b>{text}</b>
+		            </p>
+		          );
+		        }
+		      });
+		
+		      	ReactDOM.render(
+		        	<LikeButton />,
+		        	document.getElementById('Clement')
+		     	);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<script src="js/react.min.js"></script>
+		<script src="js/react-dom.min.js"></script>
+		<script src="js/babel.min.js"></script>
+		<!--document.getElementById('example')-->
+	<!--	<script src="js/render.js" type="text/babel"></script>-->
+	</head>
+
+	<body>
+		 <div id="example">
+		 	
+		 </div>
+	</body>
+	<script type="text/babel">
+		 var Names=React.createClass({
+		 	render:function(){
+		 		return <div>
+				 			{this.props.nameooo}
+				 		</div>
+		 	}
+		 })
+		 var Ages=React.createClass({
+		 	render:function(){
+		 		return <div>
+				 			{this.props.ageppp}
+				 		</div>
+		 	}
+		 })
+		 var Hello=React.createClass({
+		 	render:function(){
+		 		return <div>我是组件
+		 			<Names nameooo={this.props.name}/>
+		 			<Ages ageppp={this.props.age}/>
+		 		</div>
+		 	}
+		 })
+	     ReactDOM.render(
+	     	<Hello name="刘治龙" age="14"/>,
+	     	document.getElementById('example')
+	     )
+	</script>
+</html>

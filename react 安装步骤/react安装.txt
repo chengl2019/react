@@ -1,0 +1,17 @@
+http://blog.csdn.net/hfhwfw161226/article/details/78622230
+
+npm install -g create-react-app
+create-react-app my-app
+cd my-app
+npm start
+使用npm安装插件 npm install antd --save
+https://ant.design/index-cn
+
+
+
+
+
+
+
+
+

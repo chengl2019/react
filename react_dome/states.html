@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/babel.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="Clement">
+			
+		</div>
+		
+		<script type="text/babel">
+			
+			var Childer=React.createClass({
+			 	render:function(){
+			 		return <div>{this.props.ages} 我是子组件传过来的</div>
+			 	}
+			})
+			var LikeButton=React.createClass({
+			 	getInitialState:function(){
+			 		return {age:10}
+			 	},
+			 	hand:function(){
+			 		this.setState({age:24})
+			 	},
+			 	getDefaultProps:function(){
+			 		return {name:"xiaoming"}
+			 	},
+			 	render:function(){
+			 		return <div  onClick={this.hand}>
+			 			{i==10?'true':'false'}
+			 			{this.props.name}
+			 			{this.state.age}
+			 			<Childer ages={this.state.age}/>
+			 		</div>
+			 	}
+			 })
+			 var home=[
+			 	<h1>我是h1</h1>,
+			 	<h2>我是h2</h2>
+			 ]
+			  var  i=10;
+		     ReactDOM.render(
+		        <div>
+		        	<LikeButton />
+		     	    <div>{home}</div>
+		        </div>,
+		     	document.getElementById('Clements')
+		     )
+			
+		</script>
+	</body>
+</html>

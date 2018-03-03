@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+
+	<body>
+
+		<div id="Clement">
+
+		</div>
+
+		<script type="text/babel">
+			var Names=React.createClass({ 
+				render:function(){ 
+					return <div>
+							{this.props.nameooo}
+						</div>
+				} 
+			}) 
+			
+			var Ages=React.createClass({ 
+				render:function(){ 
+					return <div>
+							{this.props.ageppp}
+						</div>
+				} 
+			})
+			
+			var Hello=React.createClass({ 
+				render:function(){
+					return <div>我是组件
+						<Names nameooo={this.props.name}/>
+						<Ages ageppp={this.props.age}/>
+					</div>
+				} 
+			})
+			
+			ReactDOM.render(
+				<Hello name="张三" age="25" />, 
+				document.getElementById('Clement')
+			)
+
+
+
+		</script>
+	</body>
+
+</html>

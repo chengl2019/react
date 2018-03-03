@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生命周期</title>
+		<script src="js/react.min.js"></script>
+		<script src="js/react-dom.min.js"></script>
+		<script src="js/babel.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<!--document.getElementById('example')-->
+	</head>
+	<body>
+		<div id="example"></div>
+	</body>
+	<script type="text/babel">
+	    var Hello =React.createClass({
+	    	getInitialState:function(){
+	    		return {num:1}
+	    	},
+	    	add:function(){
+	    		this.setState({num:this.state.num+1})
+	    	},
+	    	render:function(){
+	    		return <div>
+	    			        <button onClick={this.add}>button</button>
+	    			        <Content Mynum={this.state.num}/>
+	    		       </div>
+	    	}
+	    })
+	    var Content=React.createClass({
+	    	getInitialState:function(){
+	    		return {
+	    			 username:"",
+	    			 password:""
+	    		}
+	    	}
+	    	,
+	    	render:function(){
+	    		return <div>{this.props.Mynum}{this.state.username}
+	    			<br />
+	    			{this.state.password}</div>
+	    	},
+	    	componentWillMount:function(){
+	    		console.log("component Will  Mount");
+	    	},
+	    	componentDidMount:function(){
+	    		console.log("component Did  Mount");
+	    		console.log("开始做ajax");
+	    		$.get("https://api.github.com/users/octocat/gists",function(result){
+	    			var  data=result[0];
+	    			this.setState({
+	    				username:data.comments_url,
+	    				password:data.commits_url
+	    			})
+	    		}.bind(this))
+	    	}
+	    })
+		ReactDOM.render(
+			<Hello />,
+			document.getElementById('example'))
+	</script>
+</html>

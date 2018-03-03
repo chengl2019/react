@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生命周期</title>
+		<script src="js/react.min.js"></script>
+		<script src="js/react-dom.min.js"></script>
+		<script src="js/babel.min.js"></script>
+		<!--document.getElementById('example')-->
+	</head>
+	<body>
+		<div id="example"></div>
+	</body>
+	<script type="text/babel">
+	    var Hello =React.createClass({
+	    	getInitialState:function(){
+	    		return {num:1}
+	    	},
+	    	add:function(event){
+	    		this.setState({num:event.target.value})
+	    	},
+	    	render:function(){
+	    		return <div>
+	    			        <button>button</button>
+	    					<input  value={this.state.num}  onChange={this.add} />     
+	    					<div>{this.state.num}</div>
+	    		        </div>
+	    	}
+	    })
+	   
+		ReactDOM.render(
+			<Hello />,
+			document.getElementById('example'))
+	</script>
+</html>

@@ -1,0 +1,141 @@
+react介绍：
+	React 是一个用于构建用户界面的 JAVASCRIPT 库。
+	React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）
+	React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。
+	React 拥有较高的性能，代码逻辑非常简单，越来越多的人已开始关注和使用它。
+
+react特点：
+	1.声明式设计 ?React采用声明范式，可以轻松描述应用。
+	2.高效 ?React通过对DOM的模拟，最大限度地减少与DOM的交互。
+	3.灵活 ?React可以与已知的库或框架很好地配合。
+	4.JSX ? JSX 是 JavaScript 语法的扩展。React 开发不一定使用 JSX ，但我们建议使用它。
+	5.组件 ? 通过 React 构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。
+	6.单向响应的数据流 ? React 实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。
+
+React 安装
+	React 可以直接下载使用，下载包中也提供了很多学习的实例。
+	本教程使用了 React 的版本为 15.4.2，你可以在官网http://facebook.github.io/react/ 下载最新版。
+
+你也可以直接使用 BootCDN 的 React CDN 库，地址如下：
+<scriptsrc="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/reactdom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+
+React JSX
+	React 使用 JSX 来替代常规的 JavaScript。
+	JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。
+	我们不需要一定使用 JSX，但它有以下优点：
+	    JSX 执行更快，因为它在编译为 JavaScript 代码后进行了优化。
+	    它是类型安全的，在编译过程中就能发现错误。
+	    使用 JSX 编写模板更加简单快速。
+
+React JSX 具体详细内容请访问：http://www.runoob.com/react/react-jsx.html
+
+this.props对象向组件传递参数（this.props.name）
+this.state对象接收this.props传递的参数
+
+注意!!!在添加属性时:
+	class 属性需要写成 className,
+	for 属性需要写成 htmlFor,
+	这是因为 class 和 for 是 JavaScript 的保留字。
+
+组件名不一定是用单标签，也可以是双标签
+<HelloMessage /> == <HelloMessage></HelloMessage>
+XML 的重点有且仅有一个根标签。
+
+
+
+React State(状态)
+React 把组件看成是一个状态机（State Machines）。
+通过与用户的交互，实现不同状态，然后渲染 UI，让用户界面和数据保持一致。
+React 里，只需更新组件的 state，然后根据新的 state 重新渲染用户界面（不要操作 DOM）。
+以下实例中创建了 LikeButton 组件，getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取。当用户点击组件，导致状态变化，this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。
+getInitialState方法用于定义初始状态
+this.setState 方法就修改状态值
+注意：
+onClick 等事件，与原生 HTML 不同，on 之后第一个字母是大写的！
+比如本章实例中，如果将 onClick={this.handleClick} 换成 onclick={this.handleClick} 则点击事件不再生效。
+
+react 组件 API：http://itbilu.com/javascript/react/EkACBdqKe.html
+
+React Props
+state 和 props 主要的区别在于 props 是不可变的，而 state 可以根据与用户交互来改变。这就是为什么有些容器组件需要定义 state 来更新和修改数据。 而子组件只能通过 props 来传递数据。
+props 传递数据
+state 接收数据
+
+<div id="Clement></div>
+var HelloMessage = React.createClass({
+  render: function() {
+    return <h1>Hello {this.props.name}</h1>;
+  }
+});
+ReactDOM.render(
+  <HelloMessage name="Runoob" />,
+  document.getElementById('Clement')
+实例中 name 属性通过 this.props.name 来获取。
+
+React 组件 API
+	设置状态：setState
+	替换状态：replaceState
+	设置属性：setProps
+	替换属性：replaceProps
+	强制更新：forceUpdate
+	获取DOM节点：findDOMNode
+	判断组件挂载状态：isMounted
+
+设置状态:setState
+	nextState，将要设置的新状态，该状态会和当前的state合并
+	callback，可选参数，回调函数。该函数会在setState设置成功，且组件重新渲染后调用。
+	合并nextState和当前state，并重新渲染组件。setState是React事件处理函数中和请求回调函数中触	发UI更新的主要方法。
+
+替换状态：replaceState
+	nextProps，将要设置的新属性，该状态会和当前的props合并
+	callback，可选参数，回调函数。该函数会在setProps设置成功，且组件重新渲染后调用。
+	设置组件属性，并重新渲染组件。
+	props相当于组件的数据流，它总是会从父组件向下传递至所有的子组件中。当和一个外部的	JavaScript应用集成时，我们可能会需要向组件传递数据或通知React.render()组件需要重新渲染，可	以使用setProps()。
+	更新组件，我可以在节点上再次调用React.render()，也可以通过setProps()方法改变组件属性，触发	组件重新渲染。
+
+替换属性：replaceProps
+	nextProps，将要设置的新属性，该属性会替换当前的props。
+	callback，可选参数，回调函数。该函数会在replaceProps设置成功，且组件重新渲染后调用。
+	replaceProps()方法与setProps类似，但它会删除原有
+
+强制更新：forceUpdate
+	callback，可选参数，回调函数。该函数会在组件render()方法调用后调用。
+	forceUpdate()方法会使组件调用自身的render()方法重新渲染组件，组件的子组件也会调用自己的	render()。但是，组件重新渲染时，依然会读取this.props和this.state，如果状态没有改变，那么	React只会更新DOM。
+	forceUpdate()方法适用于this.props和this.state之外的组件重绘（如：修改了this.state后），通	过该方法通知React需要调用render()
+	一般来说，应该尽量避免使用forceUpdate()，而仅从this.props和this.state中读取状态并由React触	发render()调用。
+
+获取DOM节点：findDOMNode（DOMElement findDOMNode()）
+	返回值：DOM元素DOMElement	
+	如果组件已经挂载到DOM中，该方法返回对应的本地浏览器 DOM 元素。当render返回null 或 false时	，this.findDOMNode()也会返回null。从DOM 中读取值的时候，该方法很有用，如：获取表单字段的值	和做一些 DOM 操作。
+
+判断组件挂载状态：isMounted
+	返回值：true或false，表示组件是否已挂载到DOM中
+	isMounted()方法用于判断组件是否已挂载到DOM中。可以使用该方法保证了setState()和forceUpdate	()在异步场景下的调用不会出错。
+
+React 组件生命周期
+	组件的生命周期可分成三个状态：
+		Mounting：已插入真实 DOM
+		Updating：正在被重新渲染
+		Unmounting：已移出真实 DOM
+
+生命周期的方法有：
+	componentWillMount 在渲染前调用,在客户端也在服务端。
+	componentDidMount : 在第一次渲染后调用，只在客户端。之后组件已经生成了对应的DOM结构，可以通过this.getDOMNode()来进行访问。 如果你想和其他JavaScript框架一起使用，可以在这个方法中调用setTimeout, setInterval或者发送AJAX请求等操作(防止异部操作阻塞UI)。
+	componentWillReceiveProps 在组件接收到一个新的prop时被调用。这个方法在初始化render时不会被调用。
+
+	shouldComponentUpdate 返回一个布尔值。在组件接收到新的props或者state时被调用。在初始化时或者使用forceUpdate时不被调用。 
+	可以在你确认不需要更新组件时使用。
+	componentWillUpdate在组件接收到新的props或者state但还没有render时被调用。在初始化时不会被调用。
+	componentDidUpdate 在组件完成更新后立即调用。在初始化时不会被调用。
+	componentWillUnmount在组件从 DOM 中移除的时候立刻被调用。
+
+
+React AJAX
+	React 组件的数据可以通过 componentDidMount 方法中的 Ajax 来获取，当从服务端获取数据库可以将数据存储在 state 中，再用 this.setState 方法重新渲染 UI。	
+	当使用异步加载数据时，在组件卸载前使用 componentWillUnmount 来取消未完成的请求。
+具体：http://www.runoob.com/react/react-ajax.html
+
+

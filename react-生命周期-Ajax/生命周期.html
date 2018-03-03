@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生命周期</title>
+		<script src="js/react.min.js"></script>
+		<script src="js/react-dom.min.js"></script>
+		<script src="js/babel.min.js"></script>
+		<!--document.getElementById('example')-->
+	</head>
+	<body>
+		<div id="example"></div>
+	</body>
+	<script type="text/babel">
+	    var Hello =React.createClass({
+	    	getInitialState:function(){
+	    		return {num:1}
+	    	},
+	    	add:function(){
+	    		this.setState({num:this.state.num+1})
+	    	},
+	    	render:function(){
+	    		return <div>
+	    			        <button onClick={this.add}>button</button>
+	    			        <Content Mynum={this.state.num}/>
+	    		       </div>
+	    	}
+	    })
+	    var Content=React.createClass({
+	    	render:function(){
+	    		return <div>{this.props.Mynum}</div>
+	    	},
+//	    	在渲染前调用
+	    	componentWillMount:function(){
+	    		console.log("component Will  Mount");
+	    	},
+//	    	在第一次渲染后调用
+	    	componentDidMount:function(){
+	    		console.log("component Did  Mount");
+	    	},
+//	    	在组件接收到一个新的prop时被调用
+	    	componentWillReceiveProps:function(){
+	    		console.log("component  Will  Receive  Props");
+	    	},
+//	    	在组件接收到新的props或者state但还没有render时被调用
+	    	componentWillUpdate:function(){
+	    		console.log("component  Will  Update");
+	    	},
+//	    	在组件完成更新后立即调用
+	    	componentDidUpdate:function(){
+	    		console.log("component Did Update");
+	    	},
+//	    	在组件接收到新的props或者state时被调用
+	    	shouldComponentUpdate:function(newProps,newState){
+	    		return true
+	    	}
+	    })
+		ReactDOM.render(
+			<Hello />
+			,
+			document.getElementById('example'))
+	</script>
+</html>

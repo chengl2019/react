@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="Clement">
+			
+		</div>
+		
+		<script type="text/babel">
+			var names=['iphone','SAMSUNG','HUAWEI'];
+			
+			ReactDOM.render(
+				<div>
+					{
+						names.map(function(name,index){
+							return<div key={index}>Hello--{name}!</div>
+						})
+					}
+				</div>,
+				document.getElementById('Clement')
+			);
+		</script>
+		
+	</body>
+</html>
